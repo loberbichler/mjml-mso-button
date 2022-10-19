@@ -1,6 +1,7 @@
-import { BodyComponent } from 'mjml-core'
+import { BodyComponent } from 'mjml-core';
 
-import widthParser from 'mjml-core/lib/helpers/widthParser'
+import widthParser from 'mjml-core/lib/helpers/widthParser';
+import { registerDependencies } from 'mjml-validator';
 
 export default class MjMsoButton extends BodyComponent {
   static componentName = 'mj-msobutton'
@@ -180,20 +181,20 @@ export default class MjMsoButton extends BodyComponent {
     <!--[if mso]>
       <tr>
         <td ${this.htmlAttributes({
-          align: this.getAttribute('align'),
-        })}>
+      align: this.getAttribute('align'),
+    })}>
           <v:roundrect
             xmlns:v="urn:schemas-microsoft-com:vml"
             xmlns:w="urn:schemas-microsoft-com:office:word"
             ${this.htmlAttributes({
-              href: this.getAttribute('href'),
-              arcsize,
-              fill: bgColor === undefined ? 'f' : 't',
-              strokeweight: stroked ? borderAttr[0] : '0pt',
-              strokecolor: borderAttr[2],
-              stroked: stroked ? 't' : 'f',
-              style: 'msocontainer',
-            })}
+      href: this.getAttribute('href'),
+      arcsize,
+      fill: bgColor === undefined ? 'f' : 't',
+      strokeweight: stroked ? borderAttr[0] : '0pt',
+      strokecolor: borderAttr[2],
+      stroked: stroked ? 't' : 'f',
+      style: 'msocontainer',
+    })}
             >
             ${stroked ? `<v:stroke dashstyle="${borderAttr[1]}" />` : ''}
             ${bgColor === undefined ? '' : `<v:fill type="tile" color="${bgColor}" />`}
@@ -216,35 +217,35 @@ export default class MjMsoButton extends BodyComponent {
       ${mso ? '<!--[if !mso]>' : ''}
       <table
         ${this.htmlAttributes({
-          border: '0',
-          cellpadding: '0',
-          cellspacing: '0',
-          role: 'presentation',
-          style: 'table',
-        })}
+      border: '0',
+      cellpadding: '0',
+      cellspacing: '0',
+      role: 'presentation',
+      style: 'table',
+    })}
       >
         <tbody>
           <tr>
             <td
               ${this.htmlAttributes({
-                align: this.getAttribute('align'),
-                bgcolor:
-                  this.getAttribute('background-color') === 'none'
-                    ? undefined
-                    : this.getAttribute('background-color'),
-                role: 'presentation',
-                style: 'td',
-                valign: this.getAttribute('vertical-align'),
-              })}
+      align: this.getAttribute('align'),
+      bgcolor:
+        this.getAttribute('background-color') === 'none'
+          ? undefined
+          : this.getAttribute('background-color'),
+      role: 'presentation',
+      style: 'td',
+      valign: this.getAttribute('vertical-align'),
+    })}
             >
               <${tag}
                 ${this.htmlAttributes({
-                  href: this.getAttribute('href'),
-                  rel: this.getAttribute('rel'),
-                  name: this.getAttribute('name'),
-                  style: 'content',
-                  target: tag === 'a' ? this.getAttribute('target') : undefined,
-                })}
+      href: this.getAttribute('href'),
+      rel: this.getAttribute('rel'),
+      name: this.getAttribute('name'),
+      style: 'content',
+      target: tag === 'a' ? this.getAttribute('target') : undefined,
+    })}
               >
                 ${this.getContent()}
               </${tag}>
@@ -256,3 +257,8 @@ export default class MjMsoButton extends BodyComponent {
     `
   }
 }
+
+registerDependencies({
+  'mj-column': ['mj-msobutton'],
+  'mj-msobutton': []
+});

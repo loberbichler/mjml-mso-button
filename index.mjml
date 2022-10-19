@@ -11,7 +11,7 @@
           color="white"
         >
           Don't click me!
-        </mj-button>
+        </mj-msobutton>
       </mj-column>
     </mj-section>
   </mj-body>
