@@ -214,7 +214,6 @@ export default class MjMsoButton extends BodyComponent {
     const mso = this.getAttribute('mso-proof')
     return `
       ${mso ? this.renderMSO() : ''}
-      ${mso ? '<!--[if !mso]>' : ''}
       <table
         ${this.htmlAttributes({
       border: '0',
@@ -253,7 +252,6 @@ export default class MjMsoButton extends BodyComponent {
           </tr>
         </tbody>
       </table>
-      ${mso ? '<![endif]-->' : ''}
     `
   }
 }
